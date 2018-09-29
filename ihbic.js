@@ -29,13 +29,14 @@ Object.assign(Array.prototype, {
 
 Object.assign(String.prototype, {
   "cut": _cut,
-  "autoConvert": _autoConvert
+  "cast": _cast
 });
 
 addEventListener("DOMContentLoaded", function() {
-  function decodeAndConvert(x) {
+  function decodeAndCast(x) {
     /* decode and convert to a specific type */
-    return x !== true ? decodeURIComponent(x).autoConvert() : x;
+    console.log(decodeURIComponent(x).cast());
+    return x !== true ? decodeURIComponent(x).cast() : x;
   }
 
   var argv = [],
@@ -80,6 +81,6 @@ addEventListener("DOMContentLoaded", function() {
 });
 
 delete _cut;
-delete _autoConvert;
+delete _cast;
 
 /* cut in the 49th line is probably better than split + join */
