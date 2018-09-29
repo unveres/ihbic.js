@@ -62,8 +62,9 @@ addEventListener("DOMContentLoaded", function() {
 
   /* decode and convert all argvs */
   argv.forEach(x => 
-    typeof x === "string" ? decodeAndConvert(x)
-    : [ decodeAndConvert(x[0]), decodeAndConvert(x[1]) ])
+    typeof x === "string"
+      ? decodeAndConvert(x)
+      : [ decodeAndConvert(x[0]), decodeAndConvert(x[1]) ]);
 
   /* make argv also an associative array */
   Object.assign(argv, argv
