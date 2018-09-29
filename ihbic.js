@@ -2,7 +2,7 @@ function _cut(index) {
   return [ this.slice(0, index), this.slice(index, this.length) ];
 };
 
-function _autoConvert() {
+function _cast() {
   var ret;
 
   if (this === "null")
@@ -61,10 +61,11 @@ addEventListener("DOMContentLoaded", function() {
     argv[0].unshift(location.origin);
 
   /* decode and convert all argvs */
-  argv.forEach(x => 
+  /* argv.forEach(x =>     that line doesn't work */
+  argv = argv.map(x => 
     typeof x === "string"
-      ? decodeAndConvert(x)
-      : [ decodeAndConvert(x[0]), decodeAndConvert(x[1]) ]);
+      ? decodeAndCast(x)
+      : [ decodeAndCast(x[0]), decodeAndCast(x[1]) ]);
 
   /* make argv also an associative array */
   Object.assign(argv, argv
