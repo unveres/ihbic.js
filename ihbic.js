@@ -35,7 +35,6 @@ Object.assign(String.prototype, {
 addEventListener("DOMContentLoaded", function() {
   function decodeAndCast(x) {
     /* decode and convert to a specific type */
-    console.log(decodeURIComponent(x).cast());
     return x !== true ? decodeURIComponent(x).cast() : x;
   }
 
@@ -62,7 +61,9 @@ addEventListener("DOMContentLoaded", function() {
     argv[0].unshift(location.origin);
 
   /* decode and convert all argvs */
-  /* argv.forEach(x =>     that line doesn't work */
+  /*argv.forEach((x, index) => argv[index] =
+  can't be: argv.forEach(x =>
+  map and forEach aren't that similar */
   argv = argv.map(x => 
     typeof x === "string"
       ? decodeAndCast(x)
